@@ -1,6 +1,6 @@
 <template>
   <div>
-    <IndexPage />
+    <router-view />
   </div>
 </template>
 
