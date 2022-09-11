@@ -8,12 +8,10 @@
     </nav>
 
     <div class="cards flex justify-center flex-wrap xl:ml-[300px] xl:mr-[300px] place-content-around">
-      <div class="card m-8 w-72 h-80 bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-700"></div>
-      <div class="card m-8 w-72 h-80 bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-700"></div>
-      <div class="card m-8 w-72 h-80 bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-700"></div>
-      <div class="card m-8 w-72 h-80 bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-700"></div>
-      <div class="card m-8 w-72 h-80 bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-700"></div>
-      <div class="card m-8 w-72 h-80 bg-slate-800 rounded-2xl shadow-xl hover:shadow-2xl hover:bg-slate-700"></div>
+
+      <!-- Card -->
+      <Card v-for="i in arr" v-bind:id="i.key" v-bind:Title="i.title" v-bind:Content="i.content" />
+
     </div>
 
     <div class="footer flex items-center m-14 mt-[300px] place-content-around">
@@ -26,12 +24,34 @@
 </template>
 
 <script>
-  
+  import axios from 'axios'
+  import Card from '../components/Card'
   export default {
     name: 'IndexPage',
+    components: {
+      Card,
+    },
+    data() {
+      return {
+        arr: [],
+      }
+    },
+    created() {
+      this.getView()
+    },
+    methods: {
+      async getView () {
+        try {
+          await axios.get("http://localhost:3001/view").then( res => this.arr = res.data.blogs )
+          console.log(this.arr[0].title)
+        } catch (err) {
+          throw err
+        }
+      }
+    }
+
   }
 </script>
-  
+
 <style>
 </style>
-  
