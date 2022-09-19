@@ -10,14 +10,10 @@
       <div class="flex justify-center items-center">
 
         <div class="form">
-          <div class="text-2xl">Id</div>
-          <input class="id p-2 mb-8 bg-slate-700 w-80 rounded" />
           <div class="text-2xl">Password</div>
           <input class="pw p-2 mb-10 w-80 bg-slate-700 rounded" />
-          
+          <button class="btn p-1 m-8 bg-slate-800 rounded text-2xl">Sign in</button>
         </div>
-        <button class="btn p-3 h-14 m-8 bg-slate-800 shadow-xl rounded text-2xl">Sign in</button>
-        
       </div>
     </div>
   </template>
